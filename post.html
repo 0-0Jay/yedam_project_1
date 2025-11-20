@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/post.css" rel="stylesheet" />
+    <title>MyBoard</title>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div class="logo">MB</div>
+        <h1>MyBoard 자유게시판</h1>
+        <button type="button" id="logout">로그아웃</button>
+      </header>
+      <section>
+        <h2 id="title"></h2>
+        <p id="nickname">작성자 : 작성자</p>
+        <p id="">작성일 : yyyy. mm. dd.</p>
+        <div id="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab maxime non
+          eveniet tempore ex, voluptatibus repellendus libero et veniam facere
+          sunt nostrum iste laboriosam, perferendis obcaecati delectus natus
+          doloribus fugiat.
+        </div>
+        <div>
+          <button type="button" id="list">목록으로</button>
+        </div>
+        <div>
+          <input
+            type="text"
+            id="cmt"
+            name="cmt"
+            placeholder="댓글을 남겨주세요"
+          />
+          <button type="button" id="cmt">등록</button>
+          <div>
+            <p>댓글작성자</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid,
+              eum.
+            </p>
+            <p>yyyy. mm. dd.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="js/post.js"></script>
+  </body>
+</html>

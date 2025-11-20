@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/main.css" rel="stylesheet" />
+    <title>MyBoard</title>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div class="logo">MB</div>
+        <h1>MyBoard 자유게시판</h1>
+        <button type="button" id="logout">로그아웃</button>
+      </header>
+      <section>
+        <h3>게시글 목록</h3>
+        <div id="search">
+          <input type="text" placeholder="검색어를 입력하세요." />
+          <button type="button">검색</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>작성일</th>
+            </tr>
+          </thead>
+          <tbody id="board"></tbody>
+        </table>
+      </section>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

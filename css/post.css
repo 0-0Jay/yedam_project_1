@@ -1,0 +1,80 @@
+body {
+  background: linear-gradient(90deg, #a8edea, #ddecec);
+  box-sizing: border-box;
+}
+
+#container {
+  color: #042029;
+  width: 1000px;
+  height: 100vh;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+header {
+  width: 92%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 6px 30px rgba(2, 6, 23, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  gap: 12px;
+  align-items: center;
+  margin: 10px;
+  display: flex;
+}
+
+section {
+  width: 92%;
+  height: 800px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 6px 30px rgba(2, 6, 23, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  gap: 12px;
+  align-items: center;
+  margin: 10px;
+}
+
+button {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  width: 100px;
+  background-color: #96d6d3;
+  color: #042029;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  margin: 5px;
+  margin-left: auto;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  border: 1px solid #042029;
+  display: grid;
+  place-items: center;
+  color: #042029;
+  font-weight: 700;
+}
+
+input {
+  width: 800px;
+}

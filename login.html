@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/login.css" rel="stylesheet" />
+    <title>MyBoard</title>
+  </head>
+  <body>
+    <div id="container">
+      <section id="intro">
+        <div class="logo">MB</div>
+        <div>
+          <h1>MyBoard에 오신 것을 환영합니다</h1>
+          <p>모두가 쉽게 사용할 수 있는 자유게시판입니다.</p>
+        </div>
+      </section>
+      <section id="form">
+        <form>
+          <fieldset>
+            <legend>로그인</legend>
+            <ul>
+              <li>
+                <label for="id">아이디</label><br />
+                <input type="text" id="id" name="id" placeholder="ID" />
+              </li>
+              <li>
+                <label for="pw">비밀번호</label><br />
+                <input
+                  type="password"
+                  id="pw"
+                  name="pw"
+                  placeholder="password"
+                />
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset id="buttons">
+            <button type="submit">로그인</button>
+            <button type="button">회원가입</button>
+          </fieldset>
+        </form>
+      </section>
+      <script src="js/login.js"></script>
+    </div>
+  </body>
+</html>
