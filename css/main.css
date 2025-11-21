@@ -101,12 +101,9 @@ button {
   width: 60px;
   height: 60px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #a8edea, #fed6e3);
   border: 1px solid #042029;
   display: grid;
   place-items: center;
-  color: #042029;
-  font-weight: 700;
 }
 
 #search {
