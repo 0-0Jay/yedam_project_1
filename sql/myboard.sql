@@ -31,8 +31,19 @@ user_id VARCHAR2(20) CONSTRAINT cmt_user_id_fk REFERENCES users(user_id),
 cmt_time DATE DEFAULT sysdate);
 
 INSERT INTO users VALUES ('admin', 'admin', '包府磊');
-INSERT INTO posts VALUES (post_seq.NEXTVAL, sysdate, 'admin', '基敲力格4', '基敲郴侩4');
+INSERT INTO posts VALUES (post_seq.NEXTVAL, sysdate, 'admin', '基敲力格'||post_seq.CURRVAL, '基敲郴侩' || post_seq.CURRVAL);
 SELECT * FROM posts;
 commit;
 
 SELECT * FROM posts;
+
+INSERT INTO comments VALUES(cmt_seq.NEXTVAL, 4, '基敲 瘩臂3涝聪促.', 'admin', sysdate);
+commit;
+SELECT * FROM comments;
+commit;
+
+SELECT c.cmt_id, u.nickname, c.cmt, TO_CHAR(c.cmt_time, 'yyyy. mm. dd. hh:mi:ss')
+       FROM comments c
+       JOIN users u ON u.user_id = c.user_id
+       WHERE c.post_id= 4
+       ORDER BY 1;

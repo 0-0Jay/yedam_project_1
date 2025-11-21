@@ -75,6 +75,8 @@ input {
   height: 38px;
   border-radius: 10px;
   padding: 3px;
+  padding-left: 10px;
+  font-size: 15px;
 }
 
 button {
@@ -110,4 +112,41 @@ button {
 #search {
   display: flex;
   gap: 10px;
+}
+
+/* 페이징 */
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 페이징은 왼쪽, 버튼은 오른쪽 */
+  position: relative;
+  gap: 12px;
+  padding: 12px;
+  margin-top: 16px;
+}
+
+#pagination {
+  margin-top: 20px;
+  display: flex;
+
+  gap: 6px;
+}
+
+#pagination button {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  width: 30px;
+}
+
+#pagination button.active {
+  background: #042029;
+  color: white;
+  border-color: #042029;
+}
+
+.btn-new {
+  position: absolute;
+  right: 0;
 }

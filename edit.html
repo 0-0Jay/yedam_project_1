@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="css/posting.css" rel="stylesheet" />
+    <link href="css/edit.css" rel="stylesheet" />
     <title>MyBoard</title>
   </head>
   <body>
@@ -18,21 +18,21 @@
           <ul>
             <li>
               <label>제목</label><br />
-              <input type="text" />
+              <input type="text" id="title" />
             </li>
             <li>
               <label>내용</label><br />
-              <textarea></textarea>
+              <textarea id="content"></textarea>
             </li>
           </ul>
           <div>
-            <button type="button" id="list">목록으로</button>
+            <button type="button" id="undo">취소</button>
             <button type="reset">초기화</button>
             <button type="button" id="upload">완료</button>
           </div>
         </form>
       </section>
     </div>
-    <script src="js/posting.js"></script>
+    <script src="js/edit.js"></script>
   </body>
 </html>

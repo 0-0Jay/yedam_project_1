@@ -16,8 +16,12 @@
       <section>
         <h3>게시글 목록</h3>
         <div id="search">
-          <input type="text" placeholder="검색어를 입력하세요." />
-          <button type="button">검색</button>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="검색어를 입력하세요."
+          />
+          <button type="button" id="search">검색</button>
         </div>
         <table>
           <thead>
@@ -30,6 +34,10 @@
           </thead>
           <tbody id="board"></tbody>
         </table>
+        <div class="controls-row" aria-label="게시글 컨트롤">
+          <div id="pagination"></div>
+          <button id="newPostBtn" class="btn-new" type="button">글쓰기</button>
+        </div>
       </section>
     </div>
     <script src="js/main.js"></script>

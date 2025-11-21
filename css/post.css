@@ -45,7 +45,12 @@ section {
   margin: 10px;
 }
 
-button {
+#list,
+#logout {
+  margin-left: auto;
+}
+
+.btn {
   display: inline-flex;
   gap: 10px;
   align-items: center;
@@ -60,7 +65,6 @@ button {
   cursor: pointer;
   font-size: 15px;
   margin: 5px;
-  margin-left: auto;
 }
 
 .logo {
@@ -76,5 +80,38 @@ button {
 }
 
 input {
-  width: 800px;
+  width: 785px;
+  height: 38px;
+  border-radius: 10px;
+  padding: 3px;
+  padding-left: 10px;
+  font-size: 15px;
+}
+
+#info,
+#btnSet {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 4px solid #042029;
+}
+
+#info {
+  margin-top: -60px;
+}
+
+span {
+  margin: 10px;
+  display: inline-block;
+}
+
+.cmt {
+  border-bottom: 2px solid white;
+  margin-bottom: 5px;
+}
+
+.cmt span {
+  margin: 10px 20px 0px 0px;
+}
+.cmt span:nth-child(1) {
+  font-weight: bold;
 }

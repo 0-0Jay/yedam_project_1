@@ -11,37 +11,29 @@
       <header>
         <div class="logo">MB</div>
         <h1>MyBoard 자유게시판</h1>
-        <button type="button" id="logout">로그아웃</button>
+        <button type="button" class="btn" id="logout">로그아웃</button>
       </header>
       <section>
         <h2 id="title"></h2>
-        <p id="nickname">작성자 : 작성자</p>
-        <p id="">작성일 : yyyy. mm. dd.</p>
-        <div id="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab maxime non
-          eveniet tempore ex, voluptatibus repellendus libero et veniam facere
-          sunt nostrum iste laboriosam, perferendis obcaecati delectus natus
-          doloribus fugiat.
+        <div id="info">
+          <span id="nickname"></span>
+          <span id="post_time"></span>
         </div>
-        <div>
-          <button type="button" id="list">목록으로</button>
+        <div id="content"></div>
+        <div id="btnSet">
+          <button type="button" class="btn" id="put">수정</button>
+          <button type="button" class="btn" id="del">삭제</button>
+          <button type="button" class="btn" id="list">목록으로</button>
         </div>
+        <div id="comments"></div>
         <div>
           <input
             type="text"
-            id="cmt"
+            id="cmt_value"
             name="cmt"
             placeholder="댓글을 남겨주세요"
           />
-          <button type="button" id="cmt">등록</button>
-          <div>
-            <p>댓글작성자</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid,
-              eum.
-            </p>
-            <p>yyyy. mm. dd.</p>
-          </div>
+          <button type="button" class="btn" id="cmt">등록</button>
         </div>
       </section>
     </div>

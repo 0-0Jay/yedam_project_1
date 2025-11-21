@@ -12,7 +12,6 @@ document
     e.preventDefault();
     const id = document.getElementById("id").value;
     const pw = document.getElementById("pw").value;
-    console.log(id, pw);
 
     fetch("http://localhost:3000/logIn", {
       method: "post",
@@ -24,9 +23,11 @@ document
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.rows);
         if (data.rows.length == 1) {
           alert("로그인하였습니다.");
+          console.log(data.rows[0][2]);
+          localStorage.setItem("user", id);
+          localStorage.setItem("nick", data.rows[0][2]);
           window.location.replace("../main.html");
         } else {
           alert("아이디 또는 비밀번호가 틀렸습니다.");
