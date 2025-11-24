@@ -48,10 +48,11 @@ function renderTable() {
     post_title.innerText = post[1];
 
     const post_meta = document.createElement("div");
+    post_meta.className = "post-meta";
     const author = document.createElement("span");
-    author.innerText = post[2];
+    author.innerText = "👤 작성자 : " + post[2];
     const date = document.createElement("span");
-    date.innerText = post[3];
+    date.innerText = "📅 " + post[3];
     post_meta.appendChild(author);
     post_meta.appendChild(date);
     post_item.appendChild(post_title);

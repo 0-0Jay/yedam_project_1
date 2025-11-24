@@ -74,7 +74,7 @@ document.querySelector(".btn-comment").addEventListener("click", (e) => {
 document.querySelector(".btn-delete").addEventListener("click", (e) => {
   if (
     data[2] == localStorage.getItem("nick") ||
-    localStorage.getItem("id") == "admin"
+    localStorage.getItem("user") == "admin"
   ) {
     if (confirm("정말 삭제하시겠습니까?")) {
       fetch("http://localhost:3000/delPost", {
@@ -96,7 +96,7 @@ document.querySelector(".btn-delete").addEventListener("click", (e) => {
 document.querySelector(".btn-edit").addEventListener("click", (e) => {
   if (
     data[2] == localStorage.getItem("nick") ||
-    localStorage.getItem("id") == "admin"
+    localStorage.getItem("user") == "admin"
   ) {
     window.location.href = "../edit.html";
   } else {
