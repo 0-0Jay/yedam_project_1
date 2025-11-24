@@ -1,11 +1,16 @@
-document.querySelector("#logout").addEventListener("click", (e) => {
+// 로그아웃
+document.querySelector(".btn-logout").addEventListener("click", (e) => {
   alert("로그아웃하였습니다.");
   localStorage.clear();
   window.location.replace("../login.html");
 });
 
+// 환영인사
+document.querySelector(".header span").innerText =
+  localStorage.getItem("nick") + " 님 환영합니다!";
+
 // 취소
-document.querySelector("#undo").addEventListener("click", (e) => {
+document.querySelector(".btn-cancel").addEventListener("click", (e) => {
   window.history.back();
 });
 
@@ -15,7 +20,8 @@ document.querySelector("#title").value = data[1];
 document.querySelector("#content").value = data[4];
 
 // 데이터 수정
-document.querySelector("#upload").addEventListener("click", async (e) => {
+document.querySelector(".btn-submit").addEventListener("click", async (e) => {
+  e.preventDefault();
   const title = document.querySelector("input").value;
   const content = document.querySelector("textarea").value;
 

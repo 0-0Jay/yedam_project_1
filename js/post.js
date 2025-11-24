@@ -1,45 +1,59 @@
-document.querySelector("#logout").addEventListener("click", (e) => {
+// 로그아웃
+document.querySelector(".btn-logout").addEventListener("click", (e) => {
   alert("로그아웃하였습니다.");
   localStorage.clear();
   window.location.replace("../login.html");
 });
 
-document.querySelector("#list").addEventListener("click", (e) => {
+// 환영인사
+document.querySelector(".header span").innerText =
+  localStorage.getItem("nick") + " 님 환영합니다!";
+
+// 목록으로
+document.querySelector(".btn-list").addEventListener("click", (e) => {
   window.location.href = "../main.html";
 });
 
 const data = JSON.parse(localStorage.getItem("post"))[0];
 const user_id = localStorage.getItem("user");
-document.querySelector("#title").innerText = data[1];
-document.querySelector("#nickname").innerText = `작성자 : ${data[2]}`;
-document.querySelector("#post_time").innerText = `작성일 : ${data[3]}`;
-document.querySelector("#content").innerText = data[4];
+document.querySelector(".post-title").innerText = data[1];
+document.querySelector("#author").innerText = `작성자 : ${data[2]}`;
+document.querySelector("#date").innerText = `작성일 : ${data[3]}`;
+document.querySelector(".post-content").innerText = data[4];
 
 // 댓글 조회
 fetch(`http://localhost:3000/comments/${data[0]}`)
   .then((res) => res.json())
   .then((data) => {
-    const container = document.getElementById("comments");
+    const container = document.querySelector(".comment-list");
     for (let cmt of data) {
-      const div = document.createElement("div");
-      div.className = "cmt";
+      const cmt_item = document.createElement("div");
+      cmt_item.className = "comment-item";
+
+      const cmt_author = document.createElement("div");
+      cmt_author.className = "comment-author";
       const user = document.createElement("span");
       user.innerText = cmt[1];
       const date = document.createElement("span");
+      date.className = "comment-date";
       date.innerText = cmt[3];
-      const rp = document.createElement("p");
-      rp.innerText = cmt[2];
-      div.appendChild(user);
-      div.appendChild(date);
-      div.appendChild(rp);
-      container.appendChild(div);
+      cmt_author.appendChild(user);
+      cmt_author.appendChild(date);
+
+      const cmt_text = document.createElement("div");
+      cmt_text.className = "comment-text";
+      cmt_text.innerText = cmt[2];
+
+      cmt_item.appendChild(cmt_author);
+      cmt_item.appendChild(cmt_text);
+      container.appendChild(cmt_item);
     }
   })
   .catch((err) => console.error(err));
 
 // 댓글 작성
-document.querySelector("#cmt").addEventListener("click", (e) => {
-  const cmt = document.querySelector("#cmt_value").value;
+document.querySelector(".btn-comment").addEventListener("click", (e) => {
+  const cmt = document.querySelector("#cmt-value").value;
   if (cmt == "") {
     alert("내용을 입력 후 등록해주세요.");
     return;
@@ -57,7 +71,7 @@ document.querySelector("#cmt").addEventListener("click", (e) => {
 });
 
 // 게시글 삭제
-document.querySelector("#del").addEventListener("click", (e) => {
+document.querySelector(".btn-delete").addEventListener("click", (e) => {
   if (
     data[2] == localStorage.getItem("nick") ||
     localStorage.getItem("id") == "admin"
@@ -79,7 +93,7 @@ document.querySelector("#del").addEventListener("click", (e) => {
 });
 
 // 게시글 수정
-document.querySelector("#put").addEventListener("click", (e) => {
+document.querySelector(".btn-edit").addEventListener("click", (e) => {
   if (
     data[2] == localStorage.getItem("nick") ||
     localStorage.getItem("id") == "admin"

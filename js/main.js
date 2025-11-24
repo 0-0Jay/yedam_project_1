@@ -1,16 +1,20 @@
 // 로그아웃
-document.querySelector("#logout").addEventListener("click", (e) => {
+document.querySelector(".btn-logout").addEventListener("click", (e) => {
   alert("로그아웃하였습니다.");
   localStorage.clear();
   window.location.replace("../login.html");
 });
 
+// 환영인사
+document.querySelector(".header span").innerText =
+  localStorage.getItem("nick") + " 님 환영합니다!";
+
 // 글쓰기 버튼
-document.querySelector(".btn-new").addEventListener("click", (e) => {
+document.querySelector(".btn-write").addEventListener("click", (e) => {
   window.location.href = "../posting.html";
 });
 
-const ROWS_PER_PAGE = 10; // 한 페이지당 10개
+const ROWS_PER_PAGE = 5; // 한 페이지당 10개
 const PAGE_GROUP_SIZE = 5; // 페이지 버튼 최대 5개
 let allPosts = [];
 let allPostsOriginal = [];
@@ -36,15 +40,24 @@ function renderTable() {
   const pagePosts = allPosts.slice(start, end);
 
   for (let post of pagePosts) {
-    const tr = document.createElement("tr");
+    const post_item = document.createElement("div");
+    post_item.className = "post-item";
 
-    post.forEach((col) => {
-      const td = document.createElement("td");
-      td.innerHTML = col;
-      tr.appendChild(td);
-    });
+    const post_title = document.createElement("div");
+    post_title.className = "post-title";
+    post_title.innerText = post[1];
 
-    tr.addEventListener("click", () => {
+    const post_meta = document.createElement("div");
+    const author = document.createElement("span");
+    author.innerText = post[2];
+    const date = document.createElement("span");
+    date.innerText = post[3];
+    post_meta.appendChild(author);
+    post_meta.appendChild(date);
+    post_item.appendChild(post_title);
+    post_item.appendChild(post_meta);
+
+    post_item.addEventListener("click", () => {
       fetch(`http://localhost:3000/board/${post[0]}`)
         .then((res) => res.json())
         .then((data) => {
@@ -53,13 +66,13 @@ function renderTable() {
         });
     });
 
-    container.appendChild(tr);
+    container.appendChild(post_item);
   }
 }
 
 // 동적 페이징 (5개 단위 그룹)
 function renderPagination() {
-  const pagination = document.getElementById("pagination");
+  const pagination = document.querySelector(".pagination");
   pagination.innerHTML = "";
 
   const totalPages = Math.ceil(allPosts.length / ROWS_PER_PAGE);
@@ -73,6 +86,7 @@ function renderPagination() {
 
   // << 버튼 (이전 그룹)
   const prevGroupBtn = document.createElement("button");
+  prevGroupBtn.className = "page-btn page-prev";
   prevGroupBtn.innerHTML = "&laquo;";
   prevGroupBtn.disabled = groupStart === 1;
   prevGroupBtn.addEventListener("click", () => {
@@ -85,6 +99,7 @@ function renderPagination() {
   // 그룹의 페이지 버튼 생성
   for (let i = groupStart; i <= groupEnd; i++) {
     const btn = document.createElement("button");
+    btn.className = "page-btn";
     btn.innerText = i;
 
     if (i === currentPage) {
@@ -102,6 +117,7 @@ function renderPagination() {
 
   // >> 버튼 (다음 그룹)
   const nextGroupBtn = document.createElement("button");
+  nextGroupBtn.className = "page-btn page-next";
   nextGroupBtn.innerHTML = "&raquo;";
   nextGroupBtn.disabled = groupEnd >= totalPages;
   nextGroupBtn.addEventListener("click", () => {
@@ -113,9 +129,9 @@ function renderPagination() {
 }
 
 // 게시글 검색
-document.getElementById("search").addEventListener("click", () => {
+document.querySelector(".btn-search").addEventListener("click", () => {
   const keyword = document
-    .getElementById("searchInput")
+    .querySelector(".search-input")
     .value.trim()
     .toLowerCase();
 
@@ -130,8 +146,8 @@ document.getElementById("search").addEventListener("click", () => {
   renderPagination();
 });
 
-document.getElementById("searchInput").addEventListener("keypress", (e) => {
+document.querySelector(".search-input").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    document.getElementById("search").click(); // 검색 버튼 클릭과 동일하게 처리
+    document.querySelector(".btn-search").click(); // 검색 버튼 클릭과 동일하게 처리
   }
 });

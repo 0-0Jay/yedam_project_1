@@ -7,35 +7,58 @@
     <title>MyBoard</title>
   </head>
   <body>
-    <div id="container">
-      <header>
-        <img src="img/logo.png" class="logo" alt="로고" />
-        <h1>MyBoard 자유게시판</h1>
-        <button type="button" class="btn" id="logout">로그아웃</button>
-      </header>
-      <section>
-        <h2 id="title"></h2>
-        <div id="info">
-          <span id="nickname"></span>
-          <span id="post_time"></span>
+    <div class="container">
+      <div class="header">
+        <div class="header-left">
+          <img src="img/logo.svg" class="header-logo" width="80px" />
+          <div class="header-content">
+            <h1>자유게시판</h1>
+            <p>자유롭게 소통하는 공간</p>
+          </div>
         </div>
-        <div id="content"></div>
-        <div id="btnSet">
-          <button type="button" class="btn" id="put">수정</button>
-          <button type="button" class="btn" id="del">삭제</button>
-          <button type="button" class="btn" id="list">목록으로</button>
+        <span></span>
+        <button class="btn-logout">🚪 로그아웃</button>
+      </div>
+
+      <div class="main-content">
+        <div class="post-header">
+          <h1 class="post-title"></h1>
+          <div class="post-meta">
+            <div class="post-meta-item">
+              <span>👤</span>
+              <span id="author"></span>
+            </div>
+            <div class="post-meta-item">
+              <span>📅</span>
+              <span id="date"></span>
+            </div>
+          </div>
         </div>
-        <div id="comments"></div>
-        <div>
-          <input
-            type="text"
-            id="cmt_value"
-            name="cmt"
-            placeholder="댓글을 남겨주세요"
-          />
-          <button type="button" class="btn" id="cmt">등록</button>
+
+        <div class="post-content"></div>
+
+        <div class="post-actions">
+          <button class="btn btn-list">← 목록으로</button>
+          <div class="btn-group">
+            <button class="btn btn-edit">✏️ 수정</button>
+            <button class="btn btn-delete">🗑️ 삭제</button>
+          </div>
         </div>
-      </section>
+
+        <div class="comment-section">
+          <div class="comment-header">💬 댓글</div>
+
+          <div class="comment-write">
+            <textarea
+              id="cmt-value"
+              placeholder="댓글을 입력하세요..."
+            ></textarea>
+            <button class="btn-comment">댓글 작성</button>
+          </div>
+
+          <div class="comment-list"></div>
+        </div>
+      </div>
     </div>
     <script src="js/post.js"></script>
   </body>

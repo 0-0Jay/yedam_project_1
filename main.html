@@ -7,38 +7,45 @@
     <title>MyBoard</title>
   </head>
   <body>
-    <div id="container">
-      <header>
-        <img src="img/logo.png" class="logo" alt="로고" />
-        <h1>MyBoard 자유게시판</h1>
-        <button type="button" id="logout">로그아웃</button>
-      </header>
-      <section>
-        <h3>게시글 목록</h3>
-        <div id="search">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="검색어를 입력하세요."
-          />
-          <button type="button" id="search">검색</button>
+    <div class="container">
+      <div class="header">
+        <div class="header-left">
+          <img src="img/logo.svg" class="header-logo" width="80px" />
+          <div class="header-content">
+            <h1>자유게시판</h1>
+            <p>자유롭게 소통하는 공간</p>
+          </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-            </tr>
-          </thead>
-          <tbody id="board"></tbody>
-        </table>
-        <div class="controls-row" aria-label="게시글 컨트롤">
-          <div id="pagination"></div>
-          <button id="newPostBtn" class="btn-new" type="button">글쓰기</button>
+        <span></span>
+        <button class="btn-logout">🚪 로그아웃</button>
+      </div>
+      <div class="main-content">
+        <div class="post-list-view">
+          <div class="top-bar">
+            <div class="search-box">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="🔍 검색어를 입력하세요"
+              />
+              <button class="btn-search">검색</button>
+            </div>
+            <button class="btn-write">✏️ 글쓰기</button>
+          </div>
+
+          <div class="post-list" id="board"></div>
+
+          <div class="pagination">
+            <button class="page-btn page-prev">«</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <button class="page-btn page-next">»</button>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
     <script src="js/main.js"></script>
   </body>

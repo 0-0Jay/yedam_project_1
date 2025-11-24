@@ -30,6 +30,15 @@ cmt VARCHAR2(500) CONSTRAINT cmt_cmt_nn NOT NULL,
 user_id VARCHAR2(20) CONSTRAINT cmt_user_id_fk REFERENCES users(user_id),
 cmt_time DATE DEFAULT sysdate);
 
+ALTER TABLE comments
+DROP CONSTRAINT cmt_post_id_fk;
+
+ALTER TABLE comments
+ADD CONSTRAINT cmt_post_id_fk
+FOREIGN KEY (post_id)
+REFERENCES posts(post_id)
+ON DELETE CASCADE;
+
 INSERT INTO users VALUES ('admin', 'admin', '관리자');
 INSERT INTO posts VALUES (post_seq.NEXTVAL, sysdate, 'admin', '샘플제목'||post_seq.CURRVAL, '샘플내용' || post_seq.CURRVAL);
 SELECT * FROM posts;
@@ -47,3 +56,14 @@ SELECT c.cmt_id, u.nickname, c.cmt, TO_CHAR(c.cmt_time, 'yyyy. mm. dd. hh:mi:ss'
        JOIN users u ON u.user_id = c.user_id
        WHERE c.post_id= 4
        ORDER BY 1;
+       
+SELECT * FROM users;
+DELETE FROM users WHERE user_id = '123';
+commit;
+
+UPDATE posts
+SET title = '수정테스트', content = '수정테스트'
+WHERE post_id = 72;
+commit;
+
+SELECT * FROM posts;
