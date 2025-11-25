@@ -3,11 +3,13 @@ const oracledb = require("oracledb");
 const express = require("express");
 const cors = require("cors");
 const app = express(); //웹서버기능
+const path = require("path");
 const port = 3000;
 
 app.use(cors()); //cors원칙  CORS 허용 (프론트에서 요청 가능하게)
 app.use(express.json()); // body-parser json 처리 / 바디에 오는 데이터
 app.use(express.urlencoded()); // key = val&key=val&.....
+app.use(express.static(path.join(__dirname, "public")));
 
 // db setting
 const dbConfig = {

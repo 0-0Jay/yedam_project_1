@@ -4,7 +4,7 @@ document.querySelector(".btn-login").addEventListener("click", async (e) => {
   const id = document.getElementById("id").value;
   const pw = document.getElementById("pw").value;
 
-  fetch("http://localhost:3000/logIn", {
+  fetch("/logIn", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -19,7 +19,7 @@ document.querySelector(".btn-login").addEventListener("click", async (e) => {
         console.log(data.rows[0][2]);
         localStorage.setItem("user", id);
         localStorage.setItem("nick", data.rows[0][2]);
-        window.location.replace("../main.html");
+        window.location.replace("/main.html");
       } else {
         alert("아이디 또는 비밀번호가 틀렸습니다.");
       }

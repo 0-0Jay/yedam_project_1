@@ -2,7 +2,7 @@
 document.querySelector(".btn-logout").addEventListener("click", (e) => {
   alert("로그아웃하였습니다.");
   localStorage.clear();
-  window.location.replace("../login.html");
+  window.location.replace("/login.html");
 });
 
 // 환영인사
@@ -11,7 +11,7 @@ document.querySelector(".header span").innerText =
 
 // 글쓰기 버튼
 document.querySelector(".btn-write").addEventListener("click", (e) => {
-  window.location.href = "../posting.html";
+  window.location.href = "/posting.html";
 });
 
 const ROWS_PER_PAGE = 5; // 한 페이지당 10개
@@ -21,7 +21,7 @@ let allPostsOriginal = [];
 let currentPage = 1;
 
 // 서버에서 전체 게시글 불러오기
-fetch("http://localhost:3000/board")
+fetch("/board")
   .then((res) => res.json())
   .then((data) => {
     allPosts = data;
@@ -59,16 +59,17 @@ function renderTable() {
     post_item.appendChild(post_meta);
 
     post_item.addEventListener("click", () => {
-      fetch(`http://localhost:3000/board/${post[0]}`)
+      fetch(`/board/${post[0]}`)
         .then((res) => res.json())
         .then((data) => {
           localStorage.setItem("post", JSON.stringify(data));
-          window.location.href = "../post.html";
+          window.location.href = "/post.html";
         });
     });
 
     container.appendChild(post_item);
   }
+  document.querySelector("#cnt").innerText = `게시글 수(${allPosts.length})`;
 }
 
 // 동적 페이징 (5개 단위 그룹)

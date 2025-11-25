@@ -1,0 +1,28 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 그라데이션 정의 -->
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1976d2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2196f3;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  
+  <!-- 배경 원 (속이 빈 원) -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="url(#blueGradient)" stroke-width="8"/>
+  
+  <!-- 벤다이어그램 (크기 증가 및 색상 차별화) -->
+  <g filter="url(#shadow)">
+    <!-- 왼쪽 원 (빨강) -->
+    <circle cx="75" cy="85" r="45" fill="#EF5350" opacity="0.5"/>
+    
+    <!-- 오른쪽 원 (파랑) -->
+    <circle cx="125" cy="85" r="45" fill="#42A5F5" opacity="0.5"/>
+    
+    <!-- 아래 원 (노랑) -->
+    <circle cx="100" cy="120" r="45" fill="#FFEB3B" opacity="0.5"/>
+  </g>
+</svg>

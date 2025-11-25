@@ -34,7 +34,7 @@ document.querySelector(".btn-signup").addEventListener("click", async (e) => {
     alert("이미 존재하는 닉네임입니다.");
     nick.focus();
   } else {
-    fetch("http://localhost:3000/signup", {
+    fetch("/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -44,12 +44,12 @@ document.querySelector(".btn-signup").addEventListener("click", async (e) => {
       }),
     });
     alert("회원가입 되었습니다. 로그인 해주세요.");
-    window.location.href = "../login.html";
+    window.location.href = "/login.html";
   }
 });
 
 async function chkUserId(id) {
-  const res = await fetch("http://localhost:3000/chkId", {
+  const res = await fetch("/chkId", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ id: id }),
@@ -59,7 +59,7 @@ async function chkUserId(id) {
 }
 
 async function chkNickname(nick) {
-  const res = await fetch("http://localhost:3000/chkNick", {
+  const res = await fetch("/chkNick", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ nick: nick }),

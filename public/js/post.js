@@ -2,7 +2,7 @@
 document.querySelector(".btn-logout").addEventListener("click", (e) => {
   alert("로그아웃하였습니다.");
   localStorage.clear();
-  window.location.replace("../login.html");
+  window.location.replace("/login.html");
 });
 
 // 환영인사
@@ -11,7 +11,7 @@ document.querySelector(".header span").innerText =
 
 // 목록으로
 document.querySelector(".btn-list").addEventListener("click", (e) => {
-  window.location.href = "../main.html";
+  window.location.href = "/main.html";
 });
 
 const data = JSON.parse(localStorage.getItem("post"))[0];
@@ -22,7 +22,7 @@ document.querySelector("#date").innerText = `작성일 : ${data[3]}`;
 document.querySelector(".post-content").innerText = data[4];
 
 // 댓글 조회
-fetch(`http://localhost:3000/comments/${data[0]}`)
+fetch(`/comments/${data[0]}`)
   .then((res) => res.json())
   .then((data) => {
     const container = document.querySelector(".comment-list");
@@ -48,6 +48,9 @@ fetch(`http://localhost:3000/comments/${data[0]}`)
       cmt_item.appendChild(cmt_text);
       container.appendChild(cmt_item);
     }
+    document.querySelector(
+      ".comment-header"
+    ).innerText = `💬 댓글(${data.length})`;
   })
   .catch((err) => console.error(err));
 
@@ -58,7 +61,7 @@ document.querySelector(".btn-comment").addEventListener("click", (e) => {
     alert("내용을 입력 후 등록해주세요.");
     return;
   }
-  fetch("http://localhost:3000/comment", {
+  fetch("/comment", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -70,6 +73,12 @@ document.querySelector(".btn-comment").addEventListener("click", (e) => {
   location.reload();
 });
 
+document.querySelector("#cmt-value").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    document.querySelector(".btn-comment").click(); // 버튼 클릭과 동일하게 처리
+  }
+});
+
 // 게시글 삭제
 document.querySelector(".btn-delete").addEventListener("click", (e) => {
   if (
@@ -77,7 +86,7 @@ document.querySelector(".btn-delete").addEventListener("click", (e) => {
     localStorage.getItem("user") == "admin"
   ) {
     if (confirm("정말 삭제하시겠습니까?")) {
-      fetch("http://localhost:3000/delPost", {
+      fetch("/delPost", {
         method: "delete",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -85,7 +94,7 @@ document.querySelector(".btn-delete").addEventListener("click", (e) => {
         }),
       });
       alert("삭제되었습니다.");
-      window.location.replace("../main.html");
+      window.location.replace("/main.html");
     }
   } else {
     alert("다른 사람의 게시글은 삭제할 수 없습니다.");
@@ -98,7 +107,7 @@ document.querySelector(".btn-edit").addEventListener("click", (e) => {
     data[2] == localStorage.getItem("nick") ||
     localStorage.getItem("user") == "admin"
   ) {
-    window.location.href = "../edit.html";
+    window.location.href = "/edit.html";
   } else {
     alert("다른 사람의 게시글은 수정할 수 없습니다.");
   }
